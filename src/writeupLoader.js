@@ -37,11 +37,11 @@ function parseFrontmatter(text) {
 
 export async function loadWriteups() {
   const writeups = [];
-  const writeupModules = import.meta.glob('./writeups/*.md', { as: 'raw' });
+  const writeupModules = import.meta.glob('./writeups/*.md', { as: 'raw', eager: true });
 
   for (const [path, loadModule] of Object.entries(writeupModules)) {
     try {
-      const text = await loadModule();
+      const text = loadModule;
       const { data, content } = parseFrontmatter(text);
       writeups.push({
         title: data.title || 'Untitled',
