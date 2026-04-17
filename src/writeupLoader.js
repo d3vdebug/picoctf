@@ -37,11 +37,14 @@ function parseFrontmatter(text) {
 
 export async function loadWriteups() {
   const writeups = [];
-  const writeupModules = import.meta.glob('../public/writeups/*.md', { as: 'raw' });
+  const files = ['easy-web.md', 'hard-reverse.md', 'medium-crypto.md', 'asdas.md', 'safds.md'];
 
-  for (const [path, loadModule] of Object.entries(writeupModules)) {
+  for (const file of files) {
     try {
-      const text = await loadModule();
+      const url = `${import.meta.env.BASE_URL}writeups/${file}`;
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      const text = await response.text();
       const { data, content } = parseFrontmatter(text);
       writeups.push({
         title: data.title || 'Untitled',
@@ -50,7 +53,7 @@ export async function loadWriteups() {
         content
       });
     } catch (error) {
-      console.error(`Error loading ${path}:`, error);
+      console.error(`Error loading ${file}:`, error);
     }
   }
 
