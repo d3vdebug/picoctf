@@ -19,4 +19,3 @@ The login form had a hidden field that checked for admin privileges. By changing
 Change it to `true` and submit. 
 
 Flag: fds [[picoCTF{web_bypass_123}]]
-

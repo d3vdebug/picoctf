@@ -19,4 +19,3 @@ Steps:
 1. Load in Ghidra.
 2. Find the string in the strings window.
 3. Trace back to the check function.
-
