@@ -37,7 +37,7 @@ function parseFrontmatter(text) {
 
 export async function loadWriteups() {
   const writeups = [];
-  const files = ['easy-web.md', 'hard-reverse.md', 'medium-crypto.md', 'asdas.md', 'safds.md'];
+  const files = ['easy-web.md', 'hard-reverse.md', 'medium-crypto.md'];
 
   for (const file of files) {
     try {
