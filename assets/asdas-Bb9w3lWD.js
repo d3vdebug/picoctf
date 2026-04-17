@@ -1,1 +1,0 @@
-var e=`data:text/markdown;base64,c2Rh`;export{e as default};
